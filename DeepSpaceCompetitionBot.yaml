@@ -103,7 +103,7 @@ Children:
           validators: [RobotDrive4, ChildDropdownSelected]
           value: LeftFront
       Base: Mecanum Drive
-      Name: Mecanum Drive 1
+      Name: Mecanum Drive
     Properties:
       Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Send to SmartDashboard, validators: null, value: false}
@@ -124,7 +124,17 @@ Children:
   Properties: {}
   Base: Subsystems
   Name: Subsystems
-- Children: []
+- Children:
+  - Children: []
+    Properties:
+      Number: !!robotbuilder.data.properties.ChoicesProperty
+        choices: ['0', '1', '2', '3', '4', '5']
+        default: 1
+        name: Number
+        validators: [Joystick]
+        value: '0'
+    Base: Joystick
+    Name: Drive Controller
   Properties: {}
   Base: OI
   Name: Operator Interface
@@ -197,7 +207,7 @@ Properties:
   Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Hawkbots\',
     extension: null, folder: true, name: Wiring file location, validators: null, value: 'C:\Users\Hawkbots\'}
   Export Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Hawkbots\FRCProjects',
-    extension: null, folder: true, name: Export Directory, validators: null, value: 'C:\Users\Hawkbots\Documents\FRCProjects'}
+    extension: null, folder: true, name: Export Directory, validators: null, value: 'C:\Users\Hawkbots\Documents\FRCProjects\Robot'}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}
 Base: Robot
