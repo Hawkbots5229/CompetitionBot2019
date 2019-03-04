@@ -81,11 +81,11 @@ public class ElevatorSub extends Subsystem {
 
     // PID controls
     talonSRX1.selectProfileSlot(0, pidIdx); //(int slotIdx, int pidIdx) pidIdx should be 0
-    talonSRX1.config_kF(0, 3, timeoutMs);     //(int slotIdx, double value, int timeoutMs)
-    talonSRX1.config_kP(0, 0.5, timeoutMs); //2
-    talonSRX1.config_kI(0, 0.04, timeoutMs);  //.003
-    talonSRX1.config_kD(0, .7, timeoutMs);  //150
-    talonSRX1.config_IntegralZone(0, 50, timeoutMs);
+    talonSRX1.config_kF(0, 5, timeoutMs);     //(int slotIdx, double value, int timeoutMs)
+    talonSRX1.config_kP(0, 0, timeoutMs); //2 10
+    talonSRX1.config_kI(0, 0, timeoutMs);  //.003   .001
+    talonSRX1.config_kD(0, 0, timeoutMs);  //150   190
+    talonSRX1.config_IntegralZone(0, 0, timeoutMs);
     
     }
 
@@ -112,9 +112,9 @@ public class ElevatorSub extends Subsystem {
         if (pos <= -300 && Robot.oi.mechanismController.getRawAxis(1) < 0) {
             talonSRX1.set(ControlMode.Velocity, 0);
         }
-        if (pos >= 68320 && Robot.oi.mechanismController.getRawAxis(1) > 0) {
-            talonSRX1.set(ControlMode.Velocity, 0);
-        }
+        //if (Robot.oi.mechanismController.getRawAxis(1) > 0) {
+        //    talonSRX1.set(ControlMode.Velocity, 0); //68420
+        //}
     }
     public void RunElevatorNoLimit(double speed) { 
         

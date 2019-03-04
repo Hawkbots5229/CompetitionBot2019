@@ -43,7 +43,9 @@ public class quarterSpeedCmd extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Robot.drivetrainSub.drive(Robot.oi.driveController.getRawAxis(0), -Robot.oi.driveController.getRawAxis(1), Robot.oi.driveController.getRawAxis(4), 0);    
+        if (Robot.oi.driveController.getRawAxis(0) < -0.01 || -Robot.oi.driveController.getRawAxis(1) < -0.01 || Robot.oi.driveController.getRawAxis(4) < -0.01 || Robot.oi.driveController.getRawAxis(0) > 0.01 || -Robot.oi.driveController.getRawAxis(1) > 0.01 || Robot.oi.driveController.getRawAxis(4) > 0.01) {
+        Robot.drivetrainSub.quarterSpeed(Robot.oi.driveController.getRawAxis(0), -Robot.oi.driveController.getRawAxis(1), Robot.oi.driveController.getRawAxis(4), 0);    
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
