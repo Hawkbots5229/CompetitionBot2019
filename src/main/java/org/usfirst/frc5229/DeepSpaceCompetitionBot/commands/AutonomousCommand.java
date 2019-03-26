@@ -64,33 +64,25 @@ public class AutonomousCommand extends Command {
         
         driveController = new Joystick(0);
         
-        Robot.drivetrainSub.drive(Robot.oi.driveController.getRawAxis(0), -Robot.oi.driveController.getRawAxis(1), Robot.oi.driveController.getRawAxis(4), 0);    
+        Robot.drivetrainSub.drive(Robot.oi.driveController.getRawAxis(0), -Robot.oi.driveController.getRawAxis(1), Robot.oi.driveController.getRawAxis(4));    
 
         joystickButton1 = new JoystickButton(driveController, 1);
         joystickButton1.whileHeld(new AutoAlignCmd());
         quarterSpeedControl = new JoystickButton(driveController, 5);
-        quarterSpeedControl.whileHeld(new quarterSpeedCmd());
         halfSpeedControl = new JoystickButton(driveController, 6);
-        halfSpeedControl.whileHeld(new halfSpeedCmd());
                
 
         mechanismController = new Joystick(1);
 
-        Robot.elevatorSub.RunElevator(Robot.oi.mechanismController.getRawAxis(1));
         
         removeElevatorLimitsBtn = new JoystickButton(mechanismController, 1);
-        removeElevatorLimitsBtn.whileHeld(new ElevatorNoLimitCmd());
         outputBallBtn = new JoystickButton(mechanismController, 3);
-        outputBallBtn.whileHeld(new OutputBallCmd());
         inputBallBtn = new JoystickButton(mechanismController, 2);
-        inputBallBtn.whileHeld(new IntakeBallCmd());
 
         POVUp = new POVButton(mechanismController, 0);
-        POVUp.whileHeld(new FrontLiftDown());
         POVLeft = new POVButton(mechanismController, 270);
         POVRight = new POVButton(mechanismController, 90);
         POVDown = new POVButton(mechanismController, 180);
-        POVDown.whileHeld(new FrontLiftUp());
 
         
     }
